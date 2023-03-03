@@ -46,8 +46,8 @@ describe('Given I am connected as an employee', () => {
     });
 });
 
-describe('When i click on the eye icon', () => {
-    test('A modal should open', async () => {
+describe('Given I am connected as an employee', () => {
+    test('I click on eyes icon', async () => {
         Object.defineProperty(window, 'localStorage', { value: localStorageMock });
         window.localStorage.setItem(
             'user',

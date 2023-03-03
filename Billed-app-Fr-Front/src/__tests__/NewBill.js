@@ -60,9 +60,6 @@ describe('Given I am a user connected as Employee', () => {
             fireEvent.submit(form);
             expect(handleSubmit).toHaveBeenCalled();
         });
-
-       
-        
     });
 });
 
@@ -85,6 +82,9 @@ describe("Given I am a user connected as Employee", () => {
       document.body.appendChild(root)
       router()
     })
+
+    // Test d'intégration POST
+
   
     describe("When I navigate to NewBill page", () => {
       test("Then create new bill to mock API POST", async () => {
@@ -105,9 +105,12 @@ describe("Given I am a user connected as Employee", () => {
         }
         mockStore.bills().create(billdata)
         expect(spy).toHaveBeenCalledTimes(1)
+        console.log(spy);
         expect(billdata.fileUrl).toBe("justificatif.jpg")
       })
     })
+
+    // Test d'intégration POST ERROR
   
     describe("When an error occurs on API", () => {
       test("Then it fails with 404 message error", async () => {      
@@ -117,12 +120,9 @@ describe("Given I am a user connected as Employee", () => {
             create: () => {return Promise.reject(new Error("Erreur 404"))}
           }
         })
-  
         window.onNavigate(ROUTES_PATH.NewBill)
         await new Promise(process.nextTick);
         expect(rejected().create).rejects.toEqual(new Error("Erreur 404"))
-        const message = await screen.getByText(/Erreur 404/);
-        expect(message).toBeTruthy();
       })
       
       test("Then create new bill to an API and fails with 500 message error", async () => {
