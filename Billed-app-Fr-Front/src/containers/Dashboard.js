@@ -144,9 +144,9 @@ export default class {
         .html("")
       this.counter ++
     }
-
+    
+     // Remove existing event listener to avoid accumulating several on the same element
     bills.forEach(bill => {
-      // Remove existing event listener to avoid accumulating several on the same element
       $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills)).unbind()
       $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
     })

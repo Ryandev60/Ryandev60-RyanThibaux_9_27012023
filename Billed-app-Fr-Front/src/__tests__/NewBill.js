@@ -14,7 +14,6 @@ import NewBill from '../containers/NewBill';
 
 jest.mock('../app/store.js', () => mockStore)
 
-
 describe('Given I am a user connected as Employee', () => {
     describe('When I am on NewBill Page', () => {
         localStorage.setItem('user', JSON.stringify({ type: 'Employee', email: 'a@a' }));
